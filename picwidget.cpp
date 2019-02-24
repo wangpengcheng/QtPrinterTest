@@ -4,18 +4,27 @@ PicWidget::PicWidget(QWidget *parent /*= 0*/) : QWidget(parent)
 {
 	//---按钮
 	pintPicBtn = new QPushButton("print", this);
+    //设置按钮位置
 	pintPicBtn->setGeometry(70, 40, 50, 30);
+    //连接信号和槽
 	connect(pintPicBtn, SIGNAL(clicked()), this, SLOT(slotPrintPic()));
 
 	//--导入图片
 	img.load("C:/Users/lin/Desktop/123.png");
     qDebug()<<img.isNull();
+    if(!img_list_.isEmpty())
+    {
+        img_list_.clear();
+    };
     //初始化图片数据
     for(int i=0;i<3;++i)
     {
         QImage temp_img;
-        temp_img.load("C:/Users/lin/Desktop/123.png");
-        img_list_.append(temp_img);
+        auto load_result=temp_img.load("C:/Users/lin/Desktop/123.png");
+        //if load successful
+        if(load_result){
+            img_list_.append(temp_img);
+        }
     }
     qDebug()<<img_list_.size();
     qDebug()<<img_list_.at(2).isNull();
@@ -26,9 +35,12 @@ PicWidget::PicWidget(QWidget *parent /*= 0*/) : QWidget(parent)
 //---按钮槽函数
 void PicWidget::slotPrintPic()
 {
-	QPrinter printer;		//---构建新对象
+    //---打印新对象
+	QPrinter printer;
+    //设置打印选择框
 	QPrintDialog printDlg(&printer, this);
-	if (printDlg.exec())			// 用于判断用户是否点击“打印”按钮
+    // 用于判断用户是否点击“打印”按钮
+	if (printDlg.exec())
 	{
 		QPainter painter;
         painter.begin(&printer);
@@ -46,7 +58,6 @@ void PicWidget::slotPrintPic()
             {
                 printer.newPage();
             }
-
         }
         painter.end();
 

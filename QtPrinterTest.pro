@@ -26,11 +26,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        picwidget.cpp
+        picwidget.cpp \
+    filesloader.cpp
 
 HEADERS += \
         mainwindow.h \
-        picwidget.h
+        picwidget.h \
+    filesloader.h
 
 FORMS += \
         mainwindow.ui
