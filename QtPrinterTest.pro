@@ -4,10 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui
 QT += printsupport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
 TARGET = QtPrinterTest
 TEMPLATE = app
 
@@ -27,11 +26,11 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    picwidget.cpp
+        picwidget.cpp
 
 HEADERS += \
         mainwindow.h \
-    picwidget.h
+        picwidget.h
 
 FORMS += \
         mainwindow.ui
