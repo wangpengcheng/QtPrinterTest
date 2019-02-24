@@ -28,12 +28,14 @@ class FilesLoader
 public:
     FilesLoader();
     FilesLoader(const QString dir_path);
+    inline QString root_dir_path() { return root_dir_path_;}
+    inline void set_root_dir_path(const QString dir_path){ root_dir_path_=dir_path;}
     ~FilesLoader();
 
 private:
     QtUnziper unziper_;//this member is to loader ziper
-    QList<QString> img_file_path_list_;//this member is to loader image file abosult path list
-    QString root_dir_path;
+    QList<QString> file_path_list_;//this member is to loader image file abosult path list
+    QString root_dir_path_; //the root directory path;
 
 };
 
