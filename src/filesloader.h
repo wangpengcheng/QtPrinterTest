@@ -21,22 +21,28 @@
 #include <QList>
 #include <QFile>
 #include <QString>
-class QtUnziper;
-
-class FilesLoader
+//using qzip
+#include <QtGui/private/qzipreader_p.h>
+#include <QtWidgets>
+#include <QFileDialog>
+#include <QDir>
+class FilesLoader: public QWidget
 {
 public:
     FilesLoader();
     FilesLoader(const QString dir_path);
+    ~FilesLoader();
     inline QString root_dir_path() { return root_dir_path_;}
     inline void set_root_dir_path(const QString dir_path){ root_dir_path_=dir_path;}
-    ~FilesLoader();
-
+    void InitFileDialog();
+    void UnZipDir();//this function is to unzip file
+    void SavePathList();//searech all file in unzip dirceatroy
+    void PrintFiles();//this function is to use printer tp print image;
+    QList<QString> file_path_list(){ return file_path_list_;}//return file_path_list;
 private:
-    QtUnziper unziper_;//this member is to loader ziper
     QList<QString> file_path_list_;//this member is to loader image file abosult path list
-    QString root_dir_path_; //the root directory path;
-
+    QString root_dir_path_=nullptr; //the root directory path;
+    QFileDialog choose_dialog_;
 };
 
 #endif // FILESLOADER_H

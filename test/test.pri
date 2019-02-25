@@ -4,14 +4,6 @@
 #
 #-------------------------------------------------
 TEMPLATE = app
-QT += core
-QT += gui gui-private
-QT += printsupport
-#QT += location location-private
-#QT += private
-QT += widgets
-TARGET = QtPrinterTest
-TEMPLATE = app
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -24,21 +16,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-# include test
-include(test/test.pri)
 
 SOURCES += \
-        src/main.cpp \
-        src/mainwindow.cpp \
-        src/picwidget.cpp \
-        src/filesloader.cpp
+       
 
 HEADERS += \
-        src/mainwindow.h \
-        src/picwidget.h \
-        src/filesloader.h
-
-FORMS += \
-        src/mainwindow.ui
+       
 
 DISTFILES +=
