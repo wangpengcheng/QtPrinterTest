@@ -17,5 +17,6 @@ int main(int argc, char *argv[])
     //files_loader_test.InitFileDialog();
     //files_loader_test.UnZipDir();
     //files_loader_test.PrintFiles();
+    //auto result=files_loader_test.SavePathList("F:/GitHub/QtPrinterTest/");
     return a.exec();
 }

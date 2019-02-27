@@ -5,7 +5,6 @@ FilesLoader::FilesLoader()
     //set window size
     int p_width=350,p_height=90;
     resize(p_width,p_height);
-    //
     setWindowTitle(QString::fromLocal8Bit("快捷打印工具"));
     //button1,button2
     get_file_button=new QPushButton(QString::fromLocal8Bit("选择文件"),this);
@@ -161,4 +160,38 @@ void FilesLoader::PrintPreviewSlot(QPrinter *printer1)
         painter.end();
         qDebug()<<"painter end";
     }
+}
+QList<QString> FilesLoader::SavePathList(QString dir_path)
+{
+    QList<QString> result;
+    QDir root_dir(dir_path);
+    if (!root_dir.exists())
+    {
+        qDebug()<<"this dirceattroy is not exists";
+    }
+    root_dir.setFilter(QDir::Dirs|QDir::Files);//除了目录或文件，其他的过滤掉
+    root_dir.setSorting(QDir::DirsFirst);//优先显示目录
+    QFileInfoList file_list = root_dir.entryInfoList();//获取文件信息列表
+    int i=0;
+    do{
+        QFileInfo fileInfo = file_list.at(i);
+        if(fileInfo.fileName()=="."|fileInfo.fileName()=="..")
+        {
+            ++i;
+            continue;
+        }
+        if (fileInfo.isDir())
+        {
+            //fileInfo.size(),fileInfo.fileName(),fileInfo.path()
+            result.append(this->SavePathList(fileInfo.filePath()));
+        }else{
+            result.append(fileInfo.filePath());
+        }
+        ++i;
+    } while(i<file_list.size());
+    for(int i=0;i<result.length();++i)
+    {
+        qDebug()<<result.at(i);
+    }
+    return result;
 }

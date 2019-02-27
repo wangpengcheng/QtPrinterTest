@@ -46,7 +46,7 @@ public:
     inline QString root_dir_path() { return root_dir_path_;}
     inline void set_root_dir_path(const QString dir_path){ root_dir_path_=dir_path;}
     void UnZipDir();//this function is to unzip file
-    void SavePathList();//searech all file in unzip dirceatroy
+    QList<QString> SavePathList(QString dir_path);//searech all file in unzip dirceatroy
     QList<QString> file_path_list(){ return file_path_list_;}//return file_path_list;
 public slots:
     void PrintPreviewSlot(QPrinter *printer1);
