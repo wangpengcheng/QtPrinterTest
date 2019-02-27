@@ -18,6 +18,8 @@ public:
 
 	public slots:
 		void slotPrintPic();
+        void printPreviewSlot(QPrinter *printerPixmap);
+        void SavePDFFile();
 private:
 	QPushButton *pintPicBtn;
 	QImage img;

@@ -13,7 +13,7 @@ QT += widgets
 TARGET = QtPrinterTest
 TEMPLATE = app
 CONFIG += c++11
-
+QTPLUGIN += windowsprintersupport
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -29,16 +29,13 @@ include(test/test.pri)
 
 SOURCES += \
         src/main.cpp \
-        src/mainwindow.cpp \
         src/picwidget.cpp \
         src/filesloader.cpp
 
 HEADERS += \
-        src/mainwindow.h \
         src/picwidget.h \
         src/filesloader.h
 
-FORMS += \
-        src/mainwindow.ui
+FORMS +=
 
 DISTFILES +=

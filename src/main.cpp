@@ -1,5 +1,4 @@
-﻿#include "mainwindow.h"
-#include <QApplication>
+﻿#include <QApplication>
 #include "picwidget.h"
 #include <QtGui/private/qzipreader_p.h>
 #include <QString>
@@ -9,15 +8,14 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-//    MainWindow w;
-//    w.show();
-  //  PicWidget win;
-  //  win.show();
+    //PicWidget win;
+   // win.show();
     QString file_path="F:/GitHub/QtPrinterTest/barcode (1).zip";
     qDebug()<<file_path;
-    FilesLoader files_loader_test(file_path);
+    FilesLoader files_loader_test;
     files_loader_test.show();
-    files_loader_test.InitFileDialog();
-    files_loader_test.UnZipDir();
+    //files_loader_test.InitFileDialog();
+    //files_loader_test.UnZipDir();
+    //files_loader_test.PrintFiles();
     return a.exec();
 }

@@ -26,23 +26,38 @@
 #include <QtWidgets>
 #include <QFileDialog>
 #include <QDir>
+
+#include <QPainter>
+#include <QWidget>
+#include <QPagedPaintDevice>
+#include <QPushButton>
+#include <QPrintDialog>
+#include <QPrinter>
+#include <QRect>
+#include <QImage>
+#include <QPrintPreviewDialog>
 class FilesLoader: public QWidget
 {
+    Q_OBJECT
 public:
     FilesLoader();
     FilesLoader(const QString dir_path);
     ~FilesLoader();
     inline QString root_dir_path() { return root_dir_path_;}
     inline void set_root_dir_path(const QString dir_path){ root_dir_path_=dir_path;}
-    void InitFileDialog();
     void UnZipDir();//this function is to unzip file
     void SavePathList();//searech all file in unzip dirceatroy
-    void PrintFiles();//this function is to use printer tp print image;
     QList<QString> file_path_list(){ return file_path_list_;}//return file_path_list;
+public slots:
+    void PrintPreviewSlot(QPrinter *printer1);
+    void InitFileDialog();
+    void PrintFiles();//this function is to use printer tp print image;
+
 private:
     QList<QString> file_path_list_;//this member is to loader image file abosult path list
     QString root_dir_path_=nullptr; //the root directory path;
-    QFileDialog choose_dialog_;
+    QPushButton *get_file_button,*print_button;
+    QLineEdit *show_path_line_edit;
 };
 
 #endif // FILESLOADER_H
