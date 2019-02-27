@@ -5,13 +5,13 @@ FilesLoader::FilesLoader()
     //set window size
     int p_width=350,p_height=90;
     resize(p_width,p_height);
-    setWindowTitle(QString::fromLocal8Bit("快捷打印工具"));
+    setWindowTitle(QString::fromUtf8("快捷打印工具"));
     //button1,button2
-    get_file_button=new QPushButton(QString::fromLocal8Bit("选择文件"),this);
-    print_button=new QPushButton(QString::fromLocal8Bit("打印文件"),this);
+    get_file_button=new QPushButton(QString::fromUtf8("选择文件"),this);
+    print_button=new QPushButton(QString::fromUtf8("打印文件"),this);
     //txtbox;
     show_path_line_edit=new QLineEdit(this);
-    show_path_line_edit->setPlaceholderText(QString::fromLocal8Bit("文件路径"));
+    show_path_line_edit->setPlaceholderText(QString::fromUtf8("文件路径"));
     show_path_line_edit->setReadOnly(true);//not allow input
     show_path_line_edit->setStyleSheet("background-color: #cccccc;");
     //set position
@@ -73,8 +73,8 @@ void FilesLoader::InitFileDialog()
         qDebug()<<"this file list cleaned";
     }
     QString cur_path=QDir::homePath();//get application file path
-    QString dialog_title=QString::fromLocal8Bit("选择一个文件");
-    QString filter=QString::fromLocal8Bit("压缩文件(*.zip);;图片文件(*.jpg*.gif*.png*.bmp);;所有文件(*.*)");
+    QString dialog_title=QString::fromUtf8("选择一个文件");
+    QString filter=QString::fromUtf8("压缩文件(*.zip);;图片文件(*.jpg*.gif*.png*.bmp);;所有文件(*.*)");
     QUrl file_path=QFileDialog::getOpenFileUrl(this,dialog_title,cur_path,filter);
     if(!file_path.isEmpty()){
         this->root_dir_path_=file_path.toString().replace("file:///","");//change file path;
